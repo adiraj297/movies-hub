@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesHub.API", "MoviesHub.API\MoviesHub.API.csproj", "{5073B4C0-471A-4E05-92E2-F96A5020DCE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesHubTest", "MoviesHubTest\MoviesHubTest.csproj", "{FBD235FF-AB9A-447B-B3AC-1FF1A8110675}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5073B4C0-471A-4E05-92E2-F96A5020DCE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5073B4C0-471A-4E05-92E2-F96A5020DCE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5073B4C0-471A-4E05-92E2-F96A5020DCE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5073B4C0-471A-4E05-92E2-F96A5020DCE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD235FF-AB9A-447B-B3AC-1FF1A8110675}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD235FF-AB9A-447B-B3AC-1FF1A8110675}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD235FF-AB9A-447B-B3AC-1FF1A8110675}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD235FF-AB9A-447B-B3AC-1FF1A8110675}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
