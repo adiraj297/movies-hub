@@ -1,6 +1,6 @@
 
 
--- ======================== INSERT Cinema ========================
+-- INSERT Cinema --
 INSERT INTO Cinema (name, location) VALUES
                                         ("Cinemarvel", "72 Bette McNee Street, Sandy Gully, NSW 2729"),
                                         ("Moviemania", "7 Old Tenterfield Road, Old Bonalbo, NSW 2469"),
@@ -10,7 +10,7 @@ INSERT INTO Cinema (name, location) VALUES
                                         ("Flicker Factory", "96 Sale-Heyfield Road, Kardella, Victoria 3951"),
                                         ("CineSpectra", "28 Reynolds Road, Lake Borumba, Queensland 4570");
 
--- ======================== INSERT Movie =========================
+-- INSERT Movie --
 INSERT INTO Movie (title, releaseDate, genre, runtime, synopsis, director, rating, princessTheatreMovieId) VALUES
                                                                                                                (
                                                                                                                    "Star Wars: The Phantom Menace (Episode I)",
@@ -103,7 +103,7 @@ INSERT INTO Movie (title, releaseDate, genre, runtime, synopsis, director, ratin
                                                                                                                    "2527338"
                                                                                                                );
 
--- ======================== INSERT MovieCinema =========================
+-- INSERT MovieCinema --
 INSERT INTO MovieCinema (movieId, cinemaId, showtime, ticketPrice) VALUES
                                                                        (
                                                                            (SELECT id FROM Movie WHERE title = "Star Wars: The Phantom Menace (Episode I)"),

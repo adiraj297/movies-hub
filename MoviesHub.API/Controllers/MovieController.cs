@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using MoviesHub.Models;
@@ -6,6 +7,7 @@ using MoviesHub.Services;
 
 namespace MoviesHub.Controllers;
 
+[ApiVersion(1)]
 [ApiController]
 [Route("api/movies")]
 public class MovieController: ControllerBase
@@ -23,9 +25,10 @@ public class MovieController: ControllerBase
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         _movieHubRepository = movieHubRepository ?? throw new ArgumentNullException(nameof(movieHubRepository));
         _logger = logger ??  throw new ArgumentNullException(nameof(logger));
-        _priceFetchService = priceFetchService;
+        _priceFetchService = priceFetchService ??  throw new ArgumentNullException(nameof(priceFetchService));
     }
     
+    [MapToApiVersion(1)]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MovieDTO>>> GetAllMovies(
         [FromQuery] string? title, 
@@ -44,9 +47,9 @@ public class MovieController: ControllerBase
         if (movieEntity is null) return NotFound($"Could not find movie details for movie with {id}");     
         
         _logger.LogInformation($"Now fetching details for movie with id: {id}");
-        var movieDetailsDTO = _mapper.Map<MovieWithMovieCinemaDTO>(movieEntity);
+        var movieDetailsDto = _mapper.Map<MovieWithMovieCinemaDTO>(movieEntity);
         var movieDetailsResponse =
-            await _priceFetchService.AllocatePrincessPricesForMovie(movieEntity.princessTheatreMovieId, movieDetailsDTO);
+            await _priceFetchService.AllocatePrincessPricesForMovie(movieEntity.princessTheatreMovieId, movieDetailsDto);
         
         return Ok(movieDetailsResponse);
     }
