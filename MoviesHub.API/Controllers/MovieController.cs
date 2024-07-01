@@ -10,24 +10,18 @@ namespace MoviesHub.Controllers;
 [ApiVersion(1)]
 [ApiController]
 [Route("api/movies")]
-public class MovieController: ControllerBase
+public class MovieController(
+    IMapper mapper,
+    IMovieHubRepository movieHubRepository,
+    ILogger<MovieController> logger,
+    PriceFetchService priceFetchService)
+    : ControllerBase
 {
-    private readonly IMapper _mapper;
-    private readonly IMovieHubRepository _movieHubRepository;
-    private readonly PriceFetchService _priceFetchService ;
-    private readonly ILogger<MovieController> _logger;
+    private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+    private readonly IMovieHubRepository _movieHubRepository = movieHubRepository ?? throw new ArgumentNullException(nameof(movieHubRepository));
+    private readonly PriceFetchService _priceFetchService = priceFetchService ??  throw new ArgumentNullException(nameof(priceFetchService));
+    private readonly ILogger<MovieController> _logger = logger ??  throw new ArgumentNullException(nameof(logger));
 
-    public MovieController(
-        IMapper mapper, 
-        IMovieHubRepository movieHubRepository, 
-        ILogger<MovieController> logger, PriceFetchService priceFetchService)
-    {
-        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        _movieHubRepository = movieHubRepository ?? throw new ArgumentNullException(nameof(movieHubRepository));
-        _logger = logger ??  throw new ArgumentNullException(nameof(logger));
-        _priceFetchService = priceFetchService ??  throw new ArgumentNullException(nameof(priceFetchService));
-    }
-    
     [MapToApiVersion(1)]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MovieDTO>>> GetAllMovies(

@@ -8,21 +8,15 @@ namespace MoviesHub.Controllers;
 
 [ApiController]
 [Route("api/movies/{movieId}/reviews")]
-public class MovieReviewsController: ControllerBase
+public class MovieReviewsController(
+    IMapper mapper,
+    IMovieHubRepository movieHubRepository,
+    ILogger<MovieReviewsController> logger)
+    : ControllerBase
 {
-    private readonly IMapper _mapper;
-    private readonly IMovieHubRepository _movieHubRepository;
-    private readonly ILogger<MovieReviewsController> _logger;
-
-    public MovieReviewsController(
-        IMapper mapper, 
-        IMovieHubRepository movieHubRepository, 
-        ILogger<MovieReviewsController> logger)
-    {
-        _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
-        _movieHubRepository = movieHubRepository ?? throw new ArgumentNullException(nameof(movieHubRepository));
-        _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-    }
+    private readonly IMapper _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+    private readonly IMovieHubRepository _movieHubRepository = movieHubRepository ?? throw new ArgumentNullException(nameof(movieHubRepository));
+    private readonly ILogger<MovieReviewsController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
 
     [HttpGet(Name = "GetReviewsForMovie")]

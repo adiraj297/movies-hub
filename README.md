@@ -11,51 +11,30 @@ dotnet test
 
 1. Get all movies 
 - Method: GET
-- Path:
-```shell
-baseUrl/api/movies
-```
+- Path: ```/api/movies```
 2. Get movie data by movieId
 - Method: GET
-- Path:
-```shell
-baseUrl/api/movies/{movieId}
-```
+- Path: ```/api/movies/{movieId}```
 
 3. Get reviews for a movie
 - Method: GET
-- Path:
-```shell
-baseUrl/api/movies/{movieId}/reviews
-```
+- Path: ```/api/movies/{movieId}/reviews```
 
 4. Add a new review for a movie
 - Method: POST
-- Path:
-```shell
-baseUrl/api/movies/{movieId}/reviews
-```
+- Path: ```/api/movies/{movieId}/reviews```
 
 5. Update an existing review for a movie
 - Method: PUT
-- Path:
-```shell
-baseUrl/api/movies/{movieId}/reviews/{reviewId}
-```
+- Path: ```/api/movies/{movieId}/reviews/{reviewId}```
 
 6. Update a review partially for a movie
 - Method: PATCH
-- Path:
-```shell
-baseUrl/api/movies/{movieId}/reviews/{reviewId}
-```
+- Path: ```/api/movies/{movieId}/reviews/{reviewId}```
 
 7. Delete a review for a movie
 - Method: DELETE
-- Path:
-```shell
-baseUrl/api/movies/{movieId}/reviews/{reviewId}
-```
+- Path: ```/api/movies/{movieId}/reviews/{reviewId}```
 
 
 ## MovieHub DB mapping:
