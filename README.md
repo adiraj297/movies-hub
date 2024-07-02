@@ -12,9 +12,11 @@ dotnet test
 1. Get all movies 
 - Method: GET
 - Path: ```/api/movies```
+
 2. Get movie data by movieId
 - Method: GET
 - Path: ```/api/movies/{movieId}```
+- Note: This route is currently not functioning as intended as the external API this flow depends on is being deprecated. However, I have still decided to keep it as part of this project as it showcases how external API calls can be done.  
 
 3. Get reviews for a movie
 - Method: GET
