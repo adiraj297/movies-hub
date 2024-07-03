@@ -87,8 +87,8 @@ public class MovieReviewsController(
         int reviewId, 
         JsonPatchDocument<MovieReviewUpdateDTO> patchDocument)
     {
-        var movieExists = !await _movieHubRepository.MovieExistsAsync(movieId);
-        if (movieExists) return NotFound($"Could not find movie with id: {movieId}");
+        var movieExists = await _movieHubRepository.MovieExistsAsync(movieId);
+        if (!movieExists) return NotFound($"Could not find movie with id: {movieId}");
     
         var reviewForMovieEntity = await _movieHubRepository.GetReviewForMovieAsync(reviewId);
         if (reviewForMovieEntity is null) return NotFound($"Could not find review with id: {reviewId} for this movie with id: {movieId}");
