@@ -33,7 +33,7 @@ public static class RegisterServices
             options.AssumeDefaultVersionWhenUnspecified = true;
             options.ApiVersionReader = ApiVersionReader.Combine(
                 new UrlSegmentApiVersionReader(),
-                new HeaderApiVersionReader("X-Api-Version"));
+                new HeaderApiVersionReader("x-api-version"));
         }).AddApiExplorer(options =>
         {
             options.GroupNameFormat = "'v'V";

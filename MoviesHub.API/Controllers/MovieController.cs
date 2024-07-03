@@ -7,7 +7,6 @@ using MoviesHub.Services;
 
 namespace MoviesHub.Controllers;
 
-[ApiVersion(1)]
 [ApiController]
 [Route("api/movies")]
 public class MovieController(
@@ -22,7 +21,7 @@ public class MovieController(
     private readonly PriceFetchService _priceFetchService = priceFetchService ??  throw new ArgumentNullException(nameof(priceFetchService));
     private readonly ILogger<MovieController> _logger = logger ??  throw new ArgumentNullException(nameof(logger));
 
-    [MapToApiVersion(1)]
+    [ApiVersion(1)]
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MovieDTO>>> GetAllMovies(
         [FromQuery] string? title, 
@@ -34,6 +33,8 @@ public class MovieController(
         return Ok(_mapper.Map<IEnumerable<MovieDTO>>(movieEntities));
     }
     
+    
+    [ApiVersion(1, Deprecated = true)]
     [HttpGet("{id}")]
     public async Task<ActionResult<MovieWithMovieCinemaDTO>> GetMovieDetails([FromRoute] int id)
     {

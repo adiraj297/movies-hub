@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using AutoMapper;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ public class MovieReviewsController(
     private readonly IMovieHubRepository _movieHubRepository = movieHubRepository ?? throw new ArgumentNullException(nameof(movieHubRepository));
     private readonly ILogger<MovieReviewsController> _logger = logger ?? throw new ArgumentNullException(nameof(logger));
 
-
+    [ApiVersion(1)]
     [HttpGet(Name = "GetReviewsForMovie")]
     public async Task<ActionResult<IEnumerable<MovieReviewDTO>>> GetReviewsForMovie(int movieId)
     {
@@ -30,7 +31,8 @@ public class MovieReviewsController(
         
         return Ok(_mapper.Map<IEnumerable<MovieReviewDTO>>(reviewsForMovie));
     }
-
+    
+    [ApiVersion(1)]
     [HttpPost]
     public async Task<ActionResult<MovieReviewDTO>> CreateMovieReview(
         int movieId,
@@ -54,6 +56,7 @@ public class MovieReviewsController(
             }, createdMovieDto);
     }
     
+    [ApiVersion(1)]
     [HttpPut("{reviewId}")]
     public async Task<ActionResult> UpdateReviewForMovie(
         int movieId, 
@@ -77,6 +80,7 @@ public class MovieReviewsController(
 
     }
     
+    [ApiVersion(1)]
     [HttpPatch("{reviewId}")]
     public async Task<ActionResult> UpdateReviewPartiallyForMovie(
         int movieId, 
@@ -105,7 +109,7 @@ public class MovieReviewsController(
     
     }
     
-
+    [ApiVersion(1)]
     [HttpDelete("{reviewId}")]
     public async Task<ActionResult> DeleteReviewForMovie(
         int movieId, 
