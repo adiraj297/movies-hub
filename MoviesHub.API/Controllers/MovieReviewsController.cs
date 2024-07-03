@@ -115,8 +115,8 @@ public class MovieReviewsController(
         int movieId, 
         int reviewId)
     {
-        var movieExists = !await _movieHubRepository.MovieExistsAsync(movieId);
-        if (movieExists) return NotFound($"Could not find movie with id: {movieId}");
+        var movieExists = await _movieHubRepository.MovieExistsAsync(movieId);
+        if (!movieExists) return NotFound($"Could not find movie with id: {movieId}");
         
         var reviewForMovie = await _movieHubRepository.GetReviewForMovieAsync(reviewId);
         if (reviewForMovie is null) return NotFound($"Could not find review with id: {reviewId} for this movie with id: {movieId}");
