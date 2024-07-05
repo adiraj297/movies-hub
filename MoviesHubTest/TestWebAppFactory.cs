@@ -13,7 +13,7 @@ using MoviesHub.Entities;
 using Newtonsoft.Json;
 namespace MoviesHubTest;
 
-public class TestWebAppFactory<T> : WebApplicationFactory<Program>
+public class TestWebAppFactory<A> : WebApplicationFactory<Program>
 {
     private readonly Mock<HttpMessageHandler> _mockHttpMessageHandler;
     private readonly Mock<IHttpClientFactory> _mockFactory;

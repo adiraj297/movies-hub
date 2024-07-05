@@ -75,10 +75,7 @@ public class MovieHubRepository: IMovieHubRepository
     public async Task CreateReviewForMovieAsync(int movieId, MovieReview movieReview)
     {
         var movie = await GetMovieAsync(movieId);
-        if (movie != null)
-        {
-            movie.movieReviews.Add(movieReview);
-        }
+        movie?.movieReviews.Add(movieReview);
     }
 
     public void DeleteReviewForMovie(MovieReview movieReview)
