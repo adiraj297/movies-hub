@@ -23,7 +23,7 @@ public class TestWebAppFactory<A> : WebApplicationFactory<Program>
         Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "TEST");
         _mockHttpMessageHandler = new Mock<HttpMessageHandler>();
         var client = new HttpClient(_mockHttpMessageHandler.Object);
-        client.BaseAddress = new Uri("https://challenge.lexicondigital.com.au/api/v2/"); 
+        client.BaseAddress = new Uri("https://some.mock.com.au/api/v2/"); 
         _mockFactory = new Mock<IHttpClientFactory>();
         _mockFactory.Setup(_ => _.CreateClient(It.IsAny<string>())).Returns(client);
     }
